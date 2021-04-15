@@ -1,0 +1,84 @@
+#This lecture is about the tree operation in Python
+class bst:
+#Yaha pe EK node create kara hain jiski data value ko key se denote kara hain
+#aur usko left and right se link krarana hain isiliye hamne lef and right pointer lia hain
+    def __init__(self,data):
+        self.key=data
+        self.left=None
+        self.right=None
+
+    def insert(self,data):
+        if self.key==None:
+            self.key=data
+        if self.key==data:
+            return
+        if self.key>data:
+            if self.left:
+                self.left.insert(data)
+            else:
+                self.left=bst(data)
+        else:
+            if self.right:
+                self.right.insert(data)
+            else:
+                self.right=bst(data)
+    def search(self,data):
+        if self.key==None:
+            print("No search operation performed")
+            return
+        else:
+            if self.key==data:
+                print("element is present")
+                return
+            if self.key>data:
+                if self.left:
+                    self.left.search(data)
+                else:
+                    print("node is not present")
+                    return
+            if self.key<data:
+                if self.right:
+                    self.right.search(data)
+                else:
+                    print("node is not present")
+                return
+
+
+
+    def preorder(self):
+        print(self.key)
+        if self.left:
+            self.left.preorder()
+        if self.right:
+            self.right.preorder()
+    def postorder(self):
+        if self.left:
+            self.left.inorder()
+        if self.right:
+            self.right.inorder()
+        print(self.key)
+    def inorder(self):
+        if self.left:
+            self.left.inorder()
+
+        print(self.key)
+
+        if self.right:
+            self.right.inorder()
+
+t=bst(None)
+t.insert(5)
+
+t.insert(2)
+t.insert(8)
+t.insert(1)
+t.insert(4)
+t.insert(6)
+t.insert(7)
+t.postorder()
+
+
+
+
+
+
